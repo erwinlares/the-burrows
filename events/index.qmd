@@ -1,0 +1,13 @@
+---
+title: "Events"
+listing:
+  contents: .
+  sort: "date desc"
+  type: default
+  fields: [date, title, description]
+  exclude:
+    filename: "index.qmd"
+---
+
+Upcoming and past BRUG meetups. All events are open to anyone who codes in R 
+— no experience level required, no registration needed unless noted.

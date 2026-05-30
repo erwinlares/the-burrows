@@ -1,0 +1,42 @@
+---
+title: "Soft Opening Meetup"
+date: 2026-07-07
+date-modified: 2026-05-30
+description: "BRUG's first gathering — come meet your fellow R coders, see the new community website, and get a live demo of reproducible project setup."
+categories: [meetup, reproducibility, tooling]
+location: "CS 3139, Computer Science Building, UW–Madison"
+time: "1:00 – 3:00 PM"
+---
+
+## About this meetup
+
+This is BRUG's soft opening — an informal first gathering to meet the community 
+and lay out what we are building together. No prior BRUG experience required 
+(obviously). Show up, say hello, and tell us what you code.
+
+## Details
+
+- **Date:** Monday, July 7, 2026
+- **Time:** 1:00 – 3:00 PM
+- **Location:** CS 3139, Computer Science Building, UW–Madison
+
+## Agenda
+
+**Meet and Greet** — introductions, coffee, the usual. We want to know who is 
+in the room and what brings you here.
+
+**The Burrows** — a walkthrough of BRUG's new community website, where we will 
+host resources, tools, tutorials, and presentations. The site lives on GitHub 
+and is built so that contributing is as simple as opening a pull request — 
+which is itself a small lesson in reproducible workflow.
+
+**Demo: reproducible project setup** — a live walkthrough of 
+[toolero](https://github.com/erwinlares/toolero) focused on project structure, 
+documentation habits, and best practices that make your work easier to share, 
+revisit, and build on.
+
+## Who should come
+
+Anyone who writes R code at UW–Madison — grad students, postdocs, staff 
+researchers, faculty, or curious undergrads. Bring your laptop if you want to 
+follow along with the demo.
