@@ -1,9 +1,35 @@
 ---
-title: "Welcome to BRUG"
+title: "Welcome to The Burrows"
+subtitle: "Home of the Badger R Users Group"
 ---
 
-BRUG — the Badger R Users Group — is a community of practice for researchers,
-scientists, and students who code in R at UW–Madison. We share tools,
-strategies, victories, and woes.
+![Bitsey, BRUG's mascot](assets/bitsey-badger-anime.png){width=180px
+fig-alt="Bitsey the Reproducible Badger — an anime-style badger in a red BRUG hoodie, arms crossed"
+style="float:right; margin-left: 2rem; margin-bottom: 1rem;"}
 
-[Learn more about BRUG →](about.qmd)
+If you write R code at UW–Madison — whether you're cleaning survey data at
+midnight before a deadline, building a Shiny dashboard for a lab, or trying
+to remember how you produced *that* figure six months ago — you belong here.
+
+BRUG, the Badger R Users Group, is a community of practice for researchers,
+scientists, and students who code in R. We gather to share tools, strategies,
+victories, and woes. We help each other figure things out. And we do it in
+the spirit of the Wisconsin Idea: start on campus, stay open, propagate
+outward.
+
+Our logo is the R³ die — *R in Reproducible Research* — three faces, three
+commitments: to the language, to reproducibility, and to research that others
+can build on. The Burrows is where that work gets done together.
+
+---
+
+## Get involved
+
+BRUG is free, open, and just getting started. Here's how to plug in:
+
+- **Join the conversation** — get on the mailing list or Slack workspace
+- **Browse the resources** — tutorials, workflows, and annotated examples
+  organized by topic
+- **Come to a meetup** — talks, demos, and live coding sessions on campus
+
+[Browse resources →](resources/index.qmd)   [Learn more about BRUG →](about.qmd)

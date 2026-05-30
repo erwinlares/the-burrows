@@ -3,9 +3,12 @@ project:
   output-dir: _site
 
 website:
-  title: "BRUG"
+  title: "The Burrows"
+  favicon: assets/brug-logo.png
   description: "Badger R Users Group — a community of practice for R coders at UW–Madison"
   navbar:
+    logo: assets/brug-logo.png
+    logo-alt: "BRUG logo — an isometric R die"
     left:
       - href: index.qmd
         text: Home
@@ -19,7 +22,7 @@ website:
         text: Presentations
     right:
       - icon: github
-        href: https://github.com/YOUR_USERNAME/brug
+        href: https://erwinlares.github.io/the-burrows/
 
 format:
   html:

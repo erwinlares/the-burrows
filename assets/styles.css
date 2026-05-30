@@ -1,0 +1,49 @@
+/* UW–Madison brand colors */
+:root {
+  --badger-red: #C5050C;
+  --dark-red: #9B0000;
+  --uw-white: #FFFFFF;
+  --light-gray: #E1E5E7;
+  --uw-black: #121212;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--badger-red) !important;
+  border-bottom: 3px solid var(--dark-red);
+}
+
+.navbar-brand,
+.navbar .nav-link {
+  color: var(--uw-white) !important;
+}
+
+.navbar .nav-link:hover {
+  color: var(--light-gray) !important;
+}
+
+.navbar-brand img {
+  max-height: 40px;
+  width: auto;
+  filter: drop-shadow(0px 1px 3px rgba(0,0,0,0.4));
+}
+
+/* Links */
+a {
+  color: var(--badger-red);
+}
+
+a:hover {
+  color: var(--dark-red);
+}
+
+/* Body */
+body {
+  color: var(--uw-black);
+  background-color: var(--uw-white);
+}
+
+/* Section dividers */
+hr {
+  border-color: var(--light-gray);
+}
