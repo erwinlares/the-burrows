@@ -1,0 +1,7 @@
+---
+title: "Blog"   # change title per file
+listing:
+  contents: .
+  sort: "date desc"
+  type: default
+---

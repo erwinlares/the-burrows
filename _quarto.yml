@@ -1,0 +1,28 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "BRUG"
+  description: "Badger R Users Group — a community of practice for R coders at UW–Madison"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - href: blog/index.qmd
+        text: Blog
+      - href: resources/index.qmd
+        text: Resources
+      - href: presentations/index.qmd
+        text: Presentations
+    right:
+      - icon: github
+        href: https://github.com/YOUR_USERNAME/brug
+
+format:
+  html:
+    theme: cosmo
+    css: assets/styles.css
+    toc: true

@@ -1,0 +1,9 @@
+---
+title: "Welcome to BRUG"
+---
+
+BRUG — the Badger R Users Group — is a community of practice for researchers,
+scientists, and students who code in R at UW–Madison. We share tools,
+strategies, victories, and woes.
+
+[Learn more about BRUG →](about.qmd)
