@@ -32,4 +32,6 @@ BRUG is free, open, and just getting started. Here's how to plug in:
   organized by topic
 - **Come to a meetup** — talks, demos, and live coding sessions on campus
 
-[Browse resources →](resources/index.qmd)   [Learn more about BRUG →](about.qmd)
+[Browse resources →](resources/index.qmd)  
+
+[Learn more about BRUG →](about.qmd)

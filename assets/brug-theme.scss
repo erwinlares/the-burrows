@@ -1,0 +1,248 @@
+/*-- scss:defaults --*/
+
+// -------------------------------------------------------
+// Fonts
+// -------------------------------------------------------
+$font-family-base:      "Inter", system-ui, sans-serif;
+$headings-font-family:  "Source Serif 4", Georgia, serif;
+$font-family-monospace: "JetBrains Mono", "Courier New", monospace;
+
+$font-size-base:        1rem;
+$line-height-base:      1.7;
+$headings-font-weight:  600;
+$headings-line-height:  1.25;
+
+
+// -------------------------------------------------------
+// UW–Madison brand colors
+// -------------------------------------------------------
+$badger-red:   #C5050C;
+$dark-red:     #9B0000;
+$uw-white:     #FFFFFF;
+$light-gray:   #E1E5E7;
+$mid-gray:     #9EA8B0;
+$uw-black:     #121212;
+$uw-blue:      #1E4D8C;
+
+
+// -------------------------------------------------------
+// Bootstrap variable overrides
+// -------------------------------------------------------
+$primary:      $badger-red;
+$secondary:    $mid-gray;
+$dark:         $uw-black;
+$light:        $light-gray;
+
+$body-color:        $uw-black;
+$body-bg:           $uw-white;
+
+$link-color:        $badger-red;
+$link-hover-color:  $dark-red;
+
+$border-radius:     0.35rem;
+$border-color:      $light-gray;
+
+$code-bg:           #F4F5F6;
+$code-color:        $uw-blue;
+
+$h1-font-size:      2rem;
+$h2-font-size:      1.5rem;
+$h3-font-size:      1.25rem;
+
+
+/*-- scss:rules --*/
+
+// -------------------------------------------------------
+// Navbar
+// Navbar background and foreground are set in _quarto.yml.
+// This section handles cosmetic details only.
+// -------------------------------------------------------
+.navbar {
+  border-bottom: 3px solid #9B0000;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+.navbar-brand {
+  font-family: $headings-font-family;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.navbar-brand img {
+  max-height: 38px;
+  width: auto;
+  filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.35));
+}
+
+.navbar .nav-link {
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+
+// -------------------------------------------------------
+// Links
+// -------------------------------------------------------
+main a,
+.content a,
+article a,
+.quarto-listing a,
+#quarto-content a {
+  color: #C5050C !important;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+main a:hover,
+.content a:hover,
+article a:hover,
+.quarto-listing a:hover,
+#quarto-content a:hover {
+  color: #9B0000 !important;
+  border-bottom-color: #9B0000;
+}
+
+// TOC and sidebar links — no underline treatment
+#TOC a,
+.sidebar-navigation a {
+  color: $mid-gray !important;
+  border-bottom: none;
+}
+
+#TOC a:hover,
+#TOC a.active,
+.sidebar-navigation a:hover {
+  color: #C5050C !important;
+}
+
+
+// -------------------------------------------------------
+// Typography
+// -------------------------------------------------------
+h1, h2, h3, h4, h5, h6 {
+  color: $uw-black;
+  margin-top: 1.6rem;
+  margin-bottom: 0.6rem;
+}
+
+h2 {
+  border-bottom: 2px solid $light-gray;
+  padding-bottom: 0.3rem;
+}
+
+p {
+  margin-bottom: 1.1rem;
+}
+
+.subtitle {
+  font-family: $font-family-base;
+  font-size: 1.05rem;
+  color: $mid-gray;
+  font-weight: 400;
+  margin-top: -0.4rem;
+  margin-bottom: 1.4rem;
+}
+
+
+// -------------------------------------------------------
+// Code
+// -------------------------------------------------------
+code {
+  font-size: 0.88em;
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+  background-color: #F4F5F6;
+  color: #1E4D8C;
+}
+
+pre {
+  border-left: 4px solid #C5050C;
+  border-radius: 0.35rem;
+  padding: 1rem 1.2rem;
+  background-color: #F4F5F6;
+  font-size: 0.88rem;
+}
+
+pre code {
+  color: $uw-black;
+  background-color: transparent;
+  padding: 0;
+}
+
+
+// -------------------------------------------------------
+// Table of contents
+// -------------------------------------------------------
+#TOC {
+  font-size: 0.88rem;
+  border-left: 3px solid $light-gray;
+  padding-left: 1rem;
+}
+
+
+// -------------------------------------------------------
+// Listing pages (blog, events, resources)
+// -------------------------------------------------------
+.quarto-listing .listing-title a {
+  color: $uw-black !important;
+  font-family: $headings-font-family;
+  font-weight: 600;
+}
+
+.quarto-listing .listing-title a:hover {
+  color: #C5050C !important;
+}
+
+.quarto-listing .listing-date {
+  color: $mid-gray;
+  font-size: 0.85rem;
+}
+
+.quarto-listing-category {
+  background-color: $light-gray;
+  color: $uw-black;
+  border-radius: 0.25rem;
+  font-size: 0.78rem;
+  padding: 0.15em 0.5em;
+}
+
+
+// -------------------------------------------------------
+// Footer
+// -------------------------------------------------------
+.nav-footer {
+  border-top: 2px solid $light-gray;
+  font-size: 0.85rem;
+  color: $mid-gray;
+  padding: 1.2rem 0;
+}
+
+.nav-footer a {
+  color: $mid-gray !important;
+  border-bottom: none;
+}
+
+.nav-footer a:hover {
+  color: #C5050C !important;
+}
+
+
+// -------------------------------------------------------
+// Utility
+// -------------------------------------------------------
+hr {
+  border-color: $light-gray;
+  margin: 2rem 0;
+}
+
+.callout {
+  border-left-color: #C5050C !important;
+}
+
+.callout-note {
+  border-left-color: #1E4D8C !important;
+}

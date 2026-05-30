@@ -4,11 +4,22 @@ project:
 
 website:
   title: "The Burrows"
+  page-footer:
+    left: "© 2026 BRUG — Badger R Users Group. Code: MIT · Content: CC BY 4.0"
+    center: "Start on campus. Stay open. Propagate outward."
+    right:
+      - icon: github
+        href: https://github.com/erwinlares/the-burrows  
   favicon: assets/brug-logo.png
   description: "Badger R Users Group — a community of practice for R coders at UW–Madison"
   navbar:
+    background: "#C5050C"
+    foreground: "#FFFFFF"
     logo: assets/brug-logo.png
     logo-alt: "BRUG logo — an isometric R die"
+    right:
+      - icon: github
+        href: https://github.com/erwinlares/the-burrows
     left:
       - href: index.qmd
         text: Home
@@ -22,12 +33,16 @@ website:
         text: Resources
       - href: presentations/index.qmd
         text: Presentations
-    right:
-      - icon: github
-        href: https://github.com/erwinlares/the-burrows
+      - href: community.qmd
+        text: Broader Community
+
 
 format:
   html:
     theme: cosmo
-    css: assets/styles.css
+    css: assets/brug-theme.scss
     toc: true
+    text: |
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
