@@ -1,7 +1,7 @@
 ---
 title: "Resources"   # change title per file
 listing:
-  contents: .
+  contents: "**/*.qmd"
   sort: "date desc"
   type: default
 ---
