@@ -30,10 +30,7 @@ host resources, tools, tutorials, and presentations. The site lives on GitHub
 and is built so that contributing is as simple as opening a pull request — 
 which is itself a small lesson in reproducible workflow.
 
-**Demo: reproducible project setup** — a live walkthrough of 
-[toolero](https://github.com/erwinlares/toolero) focused on project structure, 
-documentation habits, and best practices that make your work easier to share, 
-revisit, and build on.
+**Show and tell** — everyone brings one thing: a favorite package, a useful workflow, an RStudio trick, or anything else that made your R life a little easier. No slides required, no polish necessary — just share what you've been finding useful lately.
 
 ## Who should come
 
