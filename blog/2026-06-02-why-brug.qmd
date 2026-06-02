@@ -1,0 +1,51 @@
+---
+title: "Why BRUG Exists"
+author: "Erwin Lares"
+date: "2026-06-02"
+categories: [community, reproducibility]
+description: "How BRUG came to be, and what we hope it becomes."
+---
+
+I learned R because I had to. My dissertation wasn't going to write itself, 
+and R was the tool best suited to run the statistical analysis my research 
+needed. What I did not expect was to end up writing the entire dissertation 
+in R Markdown — not just the analysis, but the prose, the figures, the 
+references, the formatting. All of it, in one reproducible document that I 
+could rerender from scratch at any point. That experience changed how I 
+thought about what R actually was.
+
+That was years ago. In my current role as a Research Data Science Consultant 
+at UW–Madison, I work with researchers, many of whom use R in their day to 
+day work. I also maintain a Posit Connect server, publish packages to CRAN, 
+and teach data science workshops for The Carpentries and the UW–Madison 
+Libraries. And — because apparently I cannot help myself — I use R to track 
+how my pottery side business is doing. Over the years I have seen R used for 
+genomics pipelines, Shiny dashboards running in production, API wrappers, and 
+automated reporting systems.
+
+What I have also noticed, over those same years, is that other languages have 
+developed a visible culture of intermediate and advanced growth. There are 
+communities, tutorials, and spaces explicitly built for people who want to 
+move beyond the basics — places where you can find others working at the same 
+level, compare approaches, and keep pushing. That infrastructure exists, and 
+it is genuinely useful.
+
+R has an equivalent depth. The ecosystem is mature, capable, and — for 
+researchers doing serious computational work — remarkably well suited to the 
+full arc of a project, from raw data to published, reproducible output. But 
+the community infrastructure that supports that depth is quieter and harder 
+to find, at least here on campus. The result is that R users who are ready to 
+grow often do not know where to look, or assume that the path forward runs 
+through a different language entirely.
+
+BRUG exists to help close that gap. Not to make the case for R over anything 
+else, but to build a place where R users at UW–Madison can find each other, 
+share what they know, find and offer help — victories and woes alike — and 
+see the full range of what the language makes possible. A community of 
+practice, grounded in the Wisconsin Idea: start on campus, stay open, 
+propagate outward.
+
+We are just getting started. Our first meetup is on July 7th — a soft 
+opening, a chance to meet the people in the room and lay out what we are 
+building together. If you write R code at UW–Madison, at any level, you 
+belong here. Come find us.

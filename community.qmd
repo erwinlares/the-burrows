@@ -2,16 +2,14 @@
 title: "Broader Community"
 ---
 
-BRUG exists within a rich landscape of data science and research communities 
-at UW–Madison. Whether you are looking for statistical consulting, library 
-support, a student club, or a community of practice focused on machine 
-learning, the groups below are worth knowing about. We think of them as 
-neighbors — different doors into the same larger project of open, rigorous, 
-reproducible research.
+BRUG exists within a rich landscape of data science and research communities at UW–Madison. Whether you are looking for statistical consulting, library support, a student club, or a community of practice focused on machine learning, the groups below are worth knowing about. We think of them as neighbors — different doors into the same larger project of open, rigorous, reproducible research.
 
 ---
 
 ## Campus Services
+
+**[The Data Science Hub](https://hub.datascience.wisc.edu/)**
+The Data Science Hub in the Wisconsin Institute for Discovery collaborates closely with the Data Science Institute to provide data science training and implement data science into research practices across campus. The Data Science Hub executes a mission for community engagement and learning opportunities for campus researchers through a variety of services, including:
 
 **[SSCC — Social Science Computing Cooperative](https://www.sscc.wisc.edu)**
 Statistical computing support, consulting, and training for UW–Madison 
@@ -39,6 +37,9 @@ and looking for community, this is your home base.
 
 **[ML+X](https://mlplus.wisconsin.edu)**
 ML+X is a community of practice at UW–Madison that connects students, researchers, and professionals who apply machine learning (ML) methods across various domains. Hosted by the Data Science Institute, the community is designed for researchers tackling specific applications—the "X"—ranging from the social sciences to ecology and medicine
+
+**[UW Research Software Engineering Community](https://hub.datascience.wisc.edu/communities/research-software-engineering-community/)**
+The UW Research Software Engineering Community (UW RSE) is a place to learn and share ideas, methods, and best practices on data engineering and software engineering components of research across domains. The UW RSE community is open to anyone affiliated with UW-Madison who is engaged in, or interested in, research software engineering. Madison community members are also welcome to join sessions of interest.
 
 ---
 
