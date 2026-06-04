@@ -3,8 +3,8 @@ title: "Welcome to The Burrows"
 subtitle: "Home of the Badger R Users Group"
 ---
 
-![Bitsey, BRUG's mascot](assets/bitsey-badger-anime.png){width=180px
-fig-alt="Bitsey the Reproducible Badger — an anime-style badger in a red BRUG hoodie, arms crossed"
+![The R³ die](assets/brug-logo.png){width=180px
+fig-alt="A die with a capital letter R on each of the three visibles sides"
 style="float:right; margin-left: 2rem; margin-bottom: 1rem;"}
 
 If you write R code at UW–Madison — whether you're cleaning survey data at
@@ -20,6 +20,8 @@ outward.
 Our logo is the R³ die — *R in Reproducible Research* — three faces, three
 commitments: to the language, to reproducibility, and to research that others
 can build on. The Burrows is where that work gets done together.
+
+
 
 ---
 

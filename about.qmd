@@ -21,12 +21,20 @@ The R³ die — *R in Reproducible Research* — is an isometric die with an R o
 each face. Three faces, three commitments: to the language, to 
 reproducibility, and to research that others can build on.
 
+![The R³ die](assets/brug-logo.png){width=150px
+fig-alt="A die with a capital letter R on each of the three visibles sides"
+style="float:right; margin-left: 2rem; margin-bottom: 1rem;"}
+
 ## Our mascot
 
 Bitsey the Reproducible Badger is BRUG's mascot — an anime-inspired distant 
 cousin of Bucky, equally at home in a terminal as on a football field. Bitsey 
 shows up wearing a BRUG hoodie and an expression that suggests your code 
 could stand to be a little more reproducible.
+
+<!-- ![Bitsey, BRUG's mascot](assets/bitsey-badger-anime.png){width=180px -->
+<!-- fig-alt="Bitsey the Reproducible Badger — an anime-style badger in a red BRUG hoodie, arms crossed" -->
+<!-- style="float:right; margin-left: 2rem; margin-bottom: 1rem;"} -->
 
 ## Who we are for
 
