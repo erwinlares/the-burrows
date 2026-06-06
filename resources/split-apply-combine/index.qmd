@@ -1,1 +1,17 @@
+---
+title: "Split, Apply, Combine"
+date: 2026-06-05
+description: >
+  A walkthrough of six approaches to the split-apply-combine pattern in R,
+  from explicit column-by-column summaries to parallel execution with furrr,
+  using the Palmer Penguins dataset as a running example.
+categories: [data-wrangling, reproducibility, teaching]
+---
 
+[Split, Apply, Combine](https://erwinlares.com/posts/2026-06-05-split-apply-combine/) 
+works through a common research workflow problem: running the same analysis 
+across multiple subsets of a dataset. Starting from fully explicit code and 
+moving through for loops, `across()`, `group_modify()`, `map()`, and finally 
+`furrr::future_map()`, the post shows how the choice of tool reflects a 
+tradeoff between specificity and generality. It closes with a timing comparison 
+and a practical decision guide for knowing when to reach for each approach.
