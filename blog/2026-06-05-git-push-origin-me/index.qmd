@@ -1,0 +1,21 @@
+---
+title: Git Push Origin Me
+date: '2026-06-05'
+categories:
+- journal
+- productivity
+- coding
+description: One or two sentences.
+---
+
+My personal website has been quietly embarrassing me since 2021. Not in a dramatic way — it was still up, still rendering — but frozen in time in a way that felt increasingly dishonest. The version of me it described was a dissertator with a vague set of interests and a handful of blog posts from a pandemic year. I've since graduated, changed roles, became a hobby potter, and taken on a fair number of other things the old site didn't know about.
+
+The deeper problem is that I am, professionally and creatively, several people at once. I work as a research Data Science consultant for the University of Wisconsin-Madison, main a website to showcase my pottery, maintain a second website for the aikido studio, and a GitHub Pages site for the R community I'm starting in the fall. None of these talk to each other. If I write something at the intersection of pottery and data science — which happens more than you'd think — I have no clean way to surface it in both places. Every post either lives on one platform or gets manually duplicated, which means it usually doesn't get written at all.
+
+The need was clear: a unified personal site that serves as the canonical source of truth for everything I write, with a way to route content outward to the right platforms automatically.
+
+The hurdles were predictable. The old site ran on Hugo, which I had stopped understanding some time ago. The Netlify project existed but was disconnected from its GitHub repo — apparently I unlinked them at some point and forgot. The platforms I write for speak different languages: some take Git pushes, some have REST APIs, one has a Content API that may or may not be accessible on my plan. Getting all of this to play nicely with a single source file was going to take some design work before any coding.
+
+The solution I landed on is a hub-and-spoke model. This site is the hub, built in Quarto and deployed via Netlify from a GitHub repository. Every post lives here as a single .qmd file with a YAML header that carries routing metadata: which platforms it should go to, and whether it's ready to publish. A small R script reads that metadata and handles dispatch — a git push for static sites, authenticated API calls for the others.
+
+The dispatch layer is still being built. But the hub is up, the pipeline is running, and the first posts are in. It's a start.
