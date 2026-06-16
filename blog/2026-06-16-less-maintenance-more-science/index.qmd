@@ -1,5 +1,5 @@
 ---
-title: less Maintenancem more Science
+title: less Maintenance, more Science
 author: Erwin Lares
 date: '2026-06-16'
 categories:
