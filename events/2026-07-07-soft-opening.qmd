@@ -16,7 +16,7 @@ and lay out what we are building together. No prior BRUG experience required
 
 ## Details
 
-- **Date:** Monday, July 7, 2026
+- **Date:** Tuesday, July 7, 2026
 - **Time:** 1:00 – 2:30 PM
 - **Location:** CS 3139, Computer Science Building, UW–Madison
 
