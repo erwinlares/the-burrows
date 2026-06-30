@@ -1,6 +1,7 @@
 ---
 title: "Split, Apply, Combine"
 date: 2026-06-05
+image: split-apply-combine-diagram.png
 description: >
   A walkthrough of six approaches to the split-apply-combine pattern in R,
   from explicit column-by-column summaries to parallel execution with furrr,

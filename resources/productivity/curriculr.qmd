@@ -1,6 +1,7 @@
 ---
 title: "curriculr"
 date: 2026-06-01
+image: hex-sticker.png
 description: >
   An R package for producing data-driven CVs and resumes. You maintain your 
   content in an Excel workbook; curriculr reads it, converts it to Typst 
