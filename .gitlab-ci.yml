@@ -6,8 +6,7 @@ pages:
     - docker
   script:
     - apt-get update && apt-get install -y curl gdebi-core
-    - curl -LO https://github.com/quarto-dev/quarto-cli/releases/latest/download/quarto-linux-amd64.deb
-    - cat quarto-linux-amd64.deb
+    - curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb
     - gdebi --non-interactive quarto-linux-amd64.deb
     - quarto render
     - mv _site public
