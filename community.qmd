@@ -41,6 +41,10 @@ ML+X is a community of practice at UW–Madison that connects students, research
 **[UW Research Software Engineering Community](https://hub.datascience.wisc.edu/communities/research-software-engineering-community/)**
 The UW Research Software Engineering Community (UW RSE) is a place to learn and share ideas, methods, and best practices on data engineering and software engineering components of research across domains. The UW RSE community is open to anyone affiliated with UW-Madison who is engaged in, or interested in, research software engineering. Madison community members are also welcome to join sessions of interest.
 
+**[Badger Data Network](https://data.wisc.edu/badgeranalyticsusergroup/)**
+
+The Badger Data Network os a vibrant community uniting data, analytics, visualization, and business intelligence enthusiasts, promotes using institutional data to support progress and implement strategic initiatives. 
+
 ---
 
 *Know a group that belongs here? Open a pull request or get in touch.*
