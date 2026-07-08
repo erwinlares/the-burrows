@@ -6,10 +6,16 @@ categories:
 - r
 - reproducibility
 - coding
-description: One or two sentences.
+description: 'Code drift — the quiet divergence between what you report and what you
+  actually ran — is one of reproducibility''s most common and least visible failure
+  modes. This post introduces a workflow built on three toolero functions that address
+  drift structurally: a scaffold that doubles as a maintained source, a context-detection
+  utility that replaces informal path patches, and a post-render hook that derives
+  the submission script automatically.'
 engine: markdown
 ---
 
+___
 Reproducibility is, at its core, a commitment. A commitment to your future self, to those who will need to re-run the analysis six months from now when a reviewer asks a question you did not anticipate. A commitment to collaborators, who should be able to pick up where you left off. A commitment to the scientific record, which is only as trustworthy as the code behind it.
 
 That commitment rests on a quiet assumption: that the code remains stable across time and across contexts. It is worth pausing on that word, *contexts*, because it is where most reproducibility problems actually enter -- not in a single dramatic failure, but incrementally, through a process I have started thinking of as *code drift*.
@@ -17,6 +23,8 @@ That commitment rests on a quiet assumption: that the code remains stable across
 ## The Drift Problem
 
 Here is how it usually goes. You write an analysis interactively in RStudio, reading your data from `data-raw/penguins.csv`. It works. A few weeks later, you fold that analysis into a Quarto document. The path breaks -- `knitr` uses the document directory as the working directory, not the project root -- so you patch it. Then you want to run the same logic as a standalone script, maybe to test it before submitting it to a computing cluster. The path breaks again, differently, and you patch it again.
+
+![One source of truth prevents code drift and produces consistent, reproducible artifacts.](less-maintenance-more-science.png)
 
 You now have three versions of the same input line:
 
