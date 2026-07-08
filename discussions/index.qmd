@@ -1,0 +1,16 @@
+---
+title: "Discussions"
+comments: false
+---
+
+Not every conversation belongs to a blog post, an event, or a talk. Sometimes you just want to ask whether anyone's tried `targets` for an HTC pipeline, or share a trick you picked up in RStudio that didn't quite warrant its own write-up. That's what this space is for.
+
+BRUG's discussions live on GitHub, organized into a few categories:
+
+- **Q&A** — stuck on something? Ask here.
+- **Show and Tell** — the async version of our inaugural meetup format. Share a package, a workflow, a config file you're proud of.
+- **General** — anything else BRUG-adjacent.
+
+[Join the conversation on GitHub →](https://github.com/erwinlares/the-burrows/discussions)
+
+Posting requires a GitHub account, which — if you're already contributing R code on campus — you very likely already have.
