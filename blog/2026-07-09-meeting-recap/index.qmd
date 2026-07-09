@@ -1,7 +1,6 @@
 ---
-title: ""
-subtitle: ""
-description: "One or two sentences."
+title: "Soft opening recap "
+description: "A recap of BRUG's soft opening — turnout, decisions made, and what's coming next."
 author:
   - name: "Erwin Lares"
 date: 2026-07-09
@@ -16,7 +15,7 @@ draft: false
 
 <!-- No PII in this post — full roster lives in internal notes, not the repo. -->
 
-*Originally announced [here](/events/PATH-TO-SOFT-OPENING-ANNOUNCEMENT.qmd).*
+*Originally announced [here](https://erwinlares.github.io/the-burrows/events/2026-07-07-soft-opening.html)
 
 ## Details
 
