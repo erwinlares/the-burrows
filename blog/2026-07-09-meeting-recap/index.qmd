@@ -1,0 +1,75 @@
+---
+title: ""
+subtitle: ""
+description: "One or two sentences."
+author:
+  - name: "Erwin Lares"
+date: 2026-07-09
+date-modified: last-modified
+categories:
+  - meetup
+  - brug
+  - recap
+draft: true
+---
+
+
+<!-- No PII in this post — full roster lives in internal notes, not the repo. -->
+
+*Originally announced [here](/events/PATH-TO-SOFT-OPENING-ANNOUNCEMENT.qmd).*
+
+## Details
+
+- **Date:** Tuesday, July 7, 2026
+- **Time:** 1:00 – 2:30 PM
+- **Location:** CS 3139, Computer Science Building, UW–Madison
+- **Notes by:** Jayden Merrick
+
+## Who was there
+
+A genuinely mixed crowd of about ten — researchers, faculty, staff researchers, data
+analysts, grad students, and undergrads, all trading resources and ideas in the same
+room. Several attendees mentioned they'd bring PIs and colleagues along to future
+meetings.
+
+## Show and Tell
+
+John La Plante from Posit introduced Positron and Posit's enterprise products. 
+
+## Decisions made
+
+- Meetings will happen monthly going forward.
+- The next meeting will focus on package-related workshops, tentatively in August.
+
+## Open suggestions
+
+- Post directions to the meeting room for people unfamiliar with the building.
+- Consider a GitLab wiki for troubleshooting/resources, linked from The Burrows.
+  *(Followed up: BRUG is staying with GitHub Discussions for now — see the
+  [Discussions](/discussions/index.qmd) page for the reasoning.)*
+- Whether to add Slack, expand the Google Group, or use social media — including a
+  possible joint Badger BioData/BRUG account to reach undergrads separately from
+  post-graduate members.
+- Collaborate with other UW–Madison communities of practice (Data Wonks, Data Science
+  Hub Code Meeting, and others).
+
+## Connections & outreach
+
+- Badger BioData, an undergraduate R/data club, is actively building its own Quarto
+  site modeled on The Burrows.
+- The Badger Data Network reached out shortly after the soft opening asking to be
+  added to the site — an early sign of the Wisconsin Idea's "propagate outward" part
+  working as intended.
+
+## Next meeting
+
+- **Date:** Pending vote — poll sent for Tuesday, August 4
+- **Time:** 1:30 – 2:30 PM (proposed recurring slot: first Tuesday of the month)
+- **Location:** Same room, already reserved
+- **Planned focus:** Package-focused workshop; also a good chance to walk everyone
+  through using the website
+
+---
+
+*Full internal notes and the attendee roster are kept separately and are not
+published here.*
