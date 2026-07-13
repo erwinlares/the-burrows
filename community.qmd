@@ -43,7 +43,7 @@ The UW Research Software Engineering Community (UW RSE) is a place to learn and 
 
 **[Badger Data Network](https://data.wisc.edu/badgeranalyticsusergroup/)**
 
-The Badger Data Network os a vibrant community uniting data, analytics, visualization, and business intelligence enthusiasts, promotes using institutional data to support progress and implement strategic initiatives. 
+The Badger Data Network is a vibrant community uniting data, analytics, visualization, and business intelligence enthusiasts, promotes using institutional data to support progress and implement strategic initiatives. 
 
 ---
 

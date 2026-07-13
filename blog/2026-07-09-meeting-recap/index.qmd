@@ -38,7 +38,7 @@ John La Plante from Posit introduced Positron and Posit's enterprise products.
 ## Decisions made
 
 - Meetings will happen monthly going forward.
-- The next meeting will focus on package-related workshops, tentatively in August.
+- The next meeting will focus on learning about our website — The Burrows — how to carry out a pull request to collaborate, share resources, and share content in general. 
 
 ## Open suggestions
 
