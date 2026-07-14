@@ -1,0 +1,20 @@
+---
+title: Test 3 Platform Post
+author: ''
+date: '2026-07-14'
+categories:
+- data-science
+- r
+- linguistics
+- pottery
+- aikido
+- brug
+- personal
+- reproducibility
+- productivity
+- coding
+description: One or two sentences.
+engine: markdown
+---
+
+Just a test post checking that it will post to all the platforms
