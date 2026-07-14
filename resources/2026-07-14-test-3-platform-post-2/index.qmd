@@ -1,0 +1,20 @@
+---
+title: Test 3 Platform Post 2
+author: ''
+date: '2026-07-14'
+categories:
+- data-science
+- r
+- linguistics
+- pottery
+- aikido
+- brug
+- personal
+- reproducibility
+- productivity
+- coding
+description: One or two sentences.
+engine: markdown
+---
+
+Second test to erwinlares.com, The Burrows, and Capital Aikikai of Wisconsin sites 
