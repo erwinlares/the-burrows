@@ -1,12 +1,10 @@
 ---
 title: "Events"
 listing:
-  contents: .
+  contents: "*/*.qmd"
   sort: "date desc"
   type: default
-  fields: [date, title, description]
-  exclude:
-    filename: "index.qmd"
+  fields: [date, title, image, description]
 ---
 
 Upcoming and past BRUG meetups. All events are open to anyone who codes in R 

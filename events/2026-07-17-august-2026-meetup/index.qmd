@@ -1,0 +1,86 @@
+---
+title: "August 2026 Meetup"
+subtitle: ""
+description: "What to expect"
+image: "IMG_6312-thumb.JPG"
+author:
+  - name: Erwin Lares
+date: 2026-07-17
+event-date: 2026-08-04
+event-start-time: "1:30 PM"
+event-end-time: "2:30 PM"
+date-modified: last-modified
+categories: 
+  - meetup
+  - brug
+  - event
+draft: false
+---
+## Details
+
+- **Date:** Tuesday, August 4, 2026
+- **Time:** 1:30 – 2:30 PM
+- **Location:** CS 3139, Computer Science Building, UW–Madison
+
+## What we'll cover
+
+At our soft opening, we spent most of our time getting to know each other and
+trading resources. This time, I want to turn our attention to a resource we've
+been quietly building in the background: [The
+Burrows](https://erwinlares.github.io/the-burrows/), BRUG's website.
+
+Recall that BRUG itself is the synchronous half of this community — the room
+we're sitting in once a month. The Burrows is meant to be its asynchronous
+counterpart: a place where tools, strategies, questions, and general R
+know-how can live and grow between meetings, contributed by anyone who wants
+to add something. That only works, though, if the "anyone who wants to add
+something" part is actually easy to do. So the bulk of our time together will
+be a live walkthrough of two things:
+
+1. **How to submit a pull request.** I'll show, step by step, how to propose
+   a change to the site — a new resource, a fix, a blog post — so that
+   contributing feels approachable even if you've never opened a pull request
+   before.
+2. **How commenting works.** We recently wired up commenting across the site
+   using giscus, which means you can leave feedback or ask a question
+   directly on a page without needing your own hosting or account system. I'll
+   show you where that lives and how to use it.
+
+We'll close out the meeting with about ten minutes on a couple of ancillary
+topics, and — since we're already talking about how the site and this group
+should evolve — we'll use part of our time together to vote on how often we
+meet going forward and settle on future dates.
+
+## How to prepare
+
+You don't need to do anything before the meeting to participate, but if
+you'd like to get more out of the walkthrough, it may not be unreasonable to
+spend a few minutes beforehand with the following:
+
+- Take a look around [The
+  Burrows](https://erwinlares.github.io/the-burrows/) itself, just to get a
+  feel for what's there.
+- If pull requests are new to you, IBM has a short [explainer on what a pull
+  request is](https://www.ibm.com/think/topics/pull-request), and there's
+  also a [walkthrough video](https://youtu.be/nCKdihvneS0?si=nGLcJ8whnjuQBnxk)
+  that covers the same ground visually.
+- For context on *why* we're doing things this way, [Write the Docs' guide to
+  docs-as-code](https://www.writethedocs.org/guide/docs-as-code/) explains the
+  underlying philosophy — treating documentation with the same workflows we
+  already use for code.
+- And since most of what you'll be writing on the site is Markdown, IBM also
+  has a quick [Markdown primer](https://www.ibm.com/docs/en/SSYKAV?topic=train-how-do-use-markdown)
+  if that's unfamiliar territory.
+
+None of this is required reading — I'll walk through the mechanics live — but
+having the vocabulary in hand ahead of time should make the demo land a
+little easier.
+
+## A note on cadence
+
+We floated a monthly cadence at the soft opening, with the first Tuesday of
+the month as a proposed recurring slot. Nothing is locked in yet, though, and
+I'd rather we decide that together than have me declare it from the front of
+the room. Come with a sense of what frequency and timing would actually work
+for you — we'll put it to a vote before we wrap up.
+

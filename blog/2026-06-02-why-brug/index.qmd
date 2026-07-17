@@ -48,4 +48,4 @@ propagate outward.
 We are just getting started. Our first meetup is on July 7th — a soft 
 opening, a chance to meet the people in the room and lay out what we are 
 building together. If you write R code at UW–Madison, at any level, you 
-belong here. Come find us. [Here's the link to the event details](../events/2026-07-07-soft-opening.qmd) 
+belong here. Come find us. [Here's the link to the event details](../../events/2026-07-07-soft-opening/index.qmd) 

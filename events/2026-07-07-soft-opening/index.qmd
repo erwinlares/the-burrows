@@ -2,11 +2,20 @@
 title: "Soft Opening Meetup"
 date: 2026-07-07
 date-modified: 2026-05-30
+event-date: 2026-07-07
+event-start-time: "1:30 PM"
+event-end-time: "3:00 PM"
 description: "BRUG's first gathering — come meet your fellow R coders, see the new community website, and get a live demo of reproducible project setup."
-categories: [meetup, reproducibility, tooling]
+categories: 
+  - meetup
+  - brug
+  - event
+  - tooling
 location: "CS 3139, Computer Science Building, UW–Madison"
-time: "1:00 – 3:00 PM"
+draft: false
+
 ---
+
 
 ## About this meetup
 
