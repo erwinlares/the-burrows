@@ -84,3 +84,8 @@ I'd rather we decide that together than have me declare it from the front of
 the room. Come with a sense of what frequency and timing would actually work
 for you — we'll put it to a vote before we wrap up.
 
+## How to get to CS 3139
+
+![Caption](map-to-CS3139.png){#fig-id width="500px" height="375px" fig-align="center" fig-alt="A map "}
+
+You can enter the Computer Science building via the door facing Union South (1) or (my favorite) via the entrance facing Dayton St (2). Make your way to the DoIT Help Desk (H) — you don't have to talk to them, but do say hi; they crave human interaction. From there, find the elevator (E) and head to the third floor. Follow along the blue dotted line, and as always, (X) marks the spot
