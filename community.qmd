@@ -9,7 +9,7 @@ BRUG exists within a rich landscape of data science and research communities at 
 ## Campus Services
 
 **[The Data Science Hub](https://hub.datascience.wisc.edu/)**
-The Data Science Hub in the Wisconsin Institute for Discovery collaborates closely with the Data Science Institute to provide data science training and implement data science into research practices across campus. The Data Science Hub executes a mission for community engagement and learning opportunities for campus researchers through a variety of services, including:
+The Data Science Hub in the Data Science Institute provides data science training and implements data science into research practices across campus. The Data Science Hub executes a mission for community engagement and learning opportunities for campus researchers through a variety of services, including:
 
 **[SSCC — Social Science Computing Cooperative](https://www.sscc.wisc.edu)**
 Statistical computing support, consulting, and training for UW–Madison 
