@@ -45,6 +45,10 @@ The UW Research Software Engineering Community (UW RSE) is a place to learn and 
 
 The Badger Data Network is a vibrant community uniting data, analytics, visualization, and business intelligence enthusiasts, promotes using institutional data to support progress and implement strategic initiatives. 
 
+**[UW Data Wonks](https://datawonks.wisc.edu/)**
+
+Data Wonks is a Community of Practice (CoP) for members of the UW-Madison community who are interested in data and related technology. Through a variety of events, networking, and materials on this website we hope to help people access, process, interpret, and present data using a variety of tools and methods.
+
 ---
 
 *Know a group that belongs here? Open a pull request or get in touch.*
