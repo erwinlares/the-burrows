@@ -10,11 +10,11 @@ Welcome, and thank you for contributing to the Badger R Users Group website. Thi
 
 We welcome four types of contributions:
 
-Blog posts are the most open-ended format. A post might be a short reflection on a problem you solved, a walkthrough of a tool or workflow, a recap of something you learned at a conference, or an honest account of something that didn't work and why. Posts live in blog/posts/ and should include a reproducible example where relevant.
+Blog posts are the most open-ended format. A post might be a short reflection on a problem you solved, a walkthrough of a tool or workflow, a recap of something you learned at a conference, or an honest account of something that didn't work and why. Posts live in `blog/posts/` and should include a reproducible example where relevant.
 
-Resources are curated additions to one of the topic pages (visualization, wrangling, reproducibility, HPC, and others as they grow). A resource contribution might be a link with a short annotation, a code snippet, or a brief comparison of approaches. Resources live in resources/ under the appropriate topic file.
+Resources are curated additions to one of the topic pages (visualization, wrangling, reproducibility, HPC, and others as they grow). A resource contribution might be a link with a short annotation, a code snippet, or a brief comparison of approaches. Resources live in `resources/` under the appropriate topic file.
 
-Presentations are slides or supporting materials from a BRUG meetup or related event. Presentations live in presentations/ in a dated subfolder (YYYY-MM-DD-title/). A short abstract or description in the index.qmd is appreciated but not required.
+Presentations are slides or supporting materials from a BRUG meetup or related event. Presentations live in `presentations/` in a dated subfolder (`YYYY-MM-DD-title/`). A short abstract or description in the `index.qmd` is appreciated but not required.
 
 Site improvements are contributions to the infrastructure of the site itself — fixing a broken link, improving navigation, updating the about page, or proposing a new topic section. These are always welcome.
 
@@ -33,23 +33,20 @@ These are suggestions, not hard rules. When in doubt, submit what you have and w
 
 Blog posts should include a YAML header with at least a title, author, and date. Something like:
 
-\---
-
+```yaml
+---
 title: "A title that tells me what I will learn"
-
 author: "Your Name"
-
 date: "YYYY-MM-DD"
+categories: [reproducibility, wrangling, visualization, HPC, other]
+---
+```
 
-categories: \[reproducibility, wrangling, visualization, HPC, other\]
-
-\---
-
-A post should be self-contained where possible. If your post depends on data or external files, include them in the post's subfolder under data/. If your post includes code, aim for examples that a reader can run on their own machine without heroics.
+A post should be self-contained where possible. If your post depends on data or external files, include them in the post's subfolder under `data/`. If your post includes code, aim for examples that a reader can run on their own machine without heroics.
 
 Resources should include a brief annotation — one or two sentences explaining why this resource is worth the reader's time. A link alone is less useful than a link with context.
 
-Presentations should include an index.qmd with at minimum a title, presenter name, and date. Slides can be in any format (Quarto, PDF, HTML), though Quarto is preferred for consistency.
+Presentations should include an `index.qmd` with at minimum a title, presenter name, and date. Slides can be in any format (Quarto, PDF, HTML), though Quarto is preferred for consistency.
 
 ## **A note on tone**
 
