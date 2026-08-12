@@ -462,3 +462,64 @@ init_post <- function(slug, post_to = "blog", date = NULL, event_date = NULL,
     
     invisible(post_path)
 }
+
+
+# ---------------------------------------------------------------------------
+# get_started()
+# ---------------------------------------------------------------------------
+
+#' Print a quick-reference guide for init_post() to the console
+#'
+#' A console-friendly companion to readme.md -- run this when you just
+#' need a reminder of the arguments and don't want to go dig up the
+#' file. See readme.md for the full explanation of each argument.
+#'
+#' @examples
+#' get_started()
+get_started <- function() {
+    cat(
+        "init_post() scaffolds a new post for The Burrows.\n",
+        "\n",
+        "Minimal call:\n",
+        "  init_post(\"targets pipelines\")\n",
+        "  -> blog/", format(Sys.Date(), "%Y-%m-%d"), "-targets-pipelines/index.qmd\n",
+        "\n",
+        "Core arguments:\n",
+        "  slug               post title -- words, a hyphenated slug, or `code span`\n",
+        "  post_to            \"blog\" (default), \"events\", \"resources\", \"presentations\"\n",
+        "  date               publication date, defaults to today\n",
+        "  yaml_data          path to a .yml file with an author: key\n",
+        "\n",
+        "Events only (post_to = \"events\"):\n",
+        "  event_date         when the meetup actually happens\n",
+        "  event_end          last day of a multi-day event (needs event_date)\n",
+        "  event_start_time   e.g. \"1:30 PM\" or \"13:30\"\n",
+        "  event_end_time     needs event_start_time\n",
+        "\n",
+        "Image / thumbnail:\n",
+        "  image              path to a source photo -- a cropped thumbnail is\n",
+        "                     generated alongside it (requires the magick package)\n",
+        "  thumb_width, thumb_height   default 1000x750\n",
+        "  thumb_mode         \"cover\" (crop to fill) or \"contain\" (pad, no crop)\n",
+        "  bg_color           padding color for \"contain\" mode, default \"white\"\n",
+        "\n",
+        "  with_code          TRUE adds toc + execute options for posts with R output\n",
+        "\n",
+        "Example -- an event announcement with a flyer:\n",
+        "  init_post(\n",
+        "    \"Website Walkthrough\",\n",
+        "    post_to = \"events\",\n",
+        "    event_date = \"2026-08-04\",\n",
+        "    event_start_time = \"1:30 PM\",\n",
+        "    event_end_time = \"2:30 PM\",\n",
+        "    image = \"flyer.png\"\n",
+        "  )\n",
+        "\n",
+        "categories, subtitle, and description are left blank in the front\n",
+        "matter -- fill those in by hand once the file is open.\n",
+        "\n",
+        "Full details: readme.md\n",
+        sep = ""
+    )
+    invisible(NULL)
+}
