@@ -8,6 +8,7 @@ categories: [meetings, brug]
 draft: false
 ---
 
+
 <!--
   PUBLIC RECAP — this file is rendered on the live site.
   Attendee names are intentionally omitted; see internal notes for the full roster.
@@ -18,7 +19,7 @@ draft: false
 - **Date:** Tuesday, August 4, 2026
 - **Time:** 1:30 PM [end time not confirmed — carrying over the proposed 1:30–2:30 PM slot from last meeting; adjust if it ran differently]
 - **Location:** CS 3139, Computer Science Building, UW–Madison [carried over from the room already reserved after Meeting #1 — confirm this is where it actually happened]
-- **Notes by:** [not captured]
+- **Notes by:** Jayden Merrick
 
 ## Who was there
 
@@ -60,21 +61,16 @@ Beyond that, this meeting was largely exploratory — most items below were rais
 ## Connections & outreach
 
 - Badger BioData came up repeatedly as a natural collaborator — tagging them on Resources, building an open-source-projects list for their members, and adding a PR tutorial pitched at them.
-- Datawonks may be added to the Broader Community page, possibly via a pull request already in motion.
+- Datawonks was to the Broader Community page, possibly via a pull request already in motion.
 - CHTC was floated as a possible source of additional resources for the Broader Community page.
 - The Data Science Hub's Lightning Talks were suggested as a venue for propagating BRUG outward to a wider campus audience.
 
 ## Next meeting
 
-- **Date:** [not yet set]
-- **Time:** [not yet set]
-- **Location:** [not yet set]
-- **Planned focus:** No single topic was locked in, but the group generated a long list of candidates for future sessions, roughly in three clusters:
-  - **Git/GitHub fundamentals** — terminology (fork, collaborator, main branch, upstream, GitLab vs. GitHub), naming conventions, and how to handle and communicate about merge conflicts.
-  - **Reproducibility** — what reproducibility means and why it matters, R coding conventions and commit message practices, using Quarto to display user information, and managing execution context and dependencies to avoid wasted time or conflicts.
-  - **Packages and tooling** — a deep dive into `toolero`, `create.qmd`, Shiny app containers, WebAssembly-based Shiny, the `targets` package, and alternatives to Docker for containerization.
-
-  A short set of questions for members was also proposed as a way to surface real pain points ahead of time: the hardest bugs they've fought and what caused them, packages they reach for often, project ideas they never finished and why, and how professional programmers plan and communicate progress on their own projects.
+- **Date:** Tuesday, September 1, 2026
+- **Time:** 1:30 – 2:30 PM
+- **Location:** CS 3139, Computer Science Building, UW–Madison
+- **Planned focus:** A hands-on session on `toolero`, walking through the functions it offers for getting a new R project started on the right foot. The rest of the brainstorm from this meeting — Git/GitHub fundamentals, reproducibility topics, and the wider tour of packages and tooling — stays on the list for future sessions.
 
 ---
 
