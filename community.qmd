@@ -26,7 +26,7 @@ A free campus resource offering consultations, training, and guidance on researc
 
 ## Student Clubs
 
-**[The Badger BioData Initiative])(https://badgerbiodata.github.io/the-ecosystem/)**
+**[The Badger BioData Initiative](https://badgerbiodata.github.io/the-ecosystem/)**
 An undergraduate club focused on biological data projects and modern research methods. They create a space on campus to learn and explore working with biological data at your own pace. If you are an undergraduate interested in learning bioinformatics or biocomputation, this is the perfect place to start. 
 
 ---
