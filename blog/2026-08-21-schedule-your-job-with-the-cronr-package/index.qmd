@@ -1,0 +1,39 @@
+---
+title: 'A small package for a small habit: cronR'
+author: Erwin Lares
+date: '2026-08-21'
+categories:
+- r
+- coding
+- productivity
+- announcement
+description: A quick note on scheduling R scripts to run while you're not looking.
+engine: markdown
+---
+
+
+I found something small and useful this week, and I wanted to pass it along before I forget: [`cronR`](https://github.com/bnosac/cronR), an R package by BNOSAC for managing cron jobs from inside R itself.
+
+Before I get to the package, a quick word on cron jobs for anyone who hasn't met one. A cron job is just a scheduled task — a command that runs automatically at a time you specify, without you having to be there to type it in. The name comes from the Greek *chronos*, time, which feels appropriate. On Unix-like systems (which is to say, most servers, and your Mac or Linux box too), a background program called the cron daemon quietly checks a list of these scheduled tasks — the crontab — once a minute, and runs whatever is due. Set it once, and it runs on your behalf, whether or not you're at your desk.
+
+That last part is where this becomes relevant to a researcher's actual day. Picture the scene: you have a script that pulls fresh data, refits a model, and knits a short report. Running it by hand means remembering to run it, then waiting around for it to finish. Instead, you could schedule it for 7:45 AM, right before your commute wraps up, so that by the time you sit down with your coffee, the report is already sitting in your inbox or your project folder. Or set it to run at noon, just as you're heading out to lunch, so the afternoon starts with results instead of a spinner. The job runs whether you're watching or not — which is, after all, the entire point.
+
+`cronR` makes this approachable from R, without requiring you to hand-edit a crontab file (a task with its own particular syntax and its own particular ways of going wrong). A minimal example:
+
+```r
+library(cronR)
+
+f <- "path/to/my_script.R"
+cmd <- cron_rscript(f)
+
+cron_add(cmd, frequency = "daily", at = "07:45", id = "morning_report")
+cron_ls()
+```
+
+`cron_add()` schedules the job, `cron_ls()` lists what's currently scheduled, and `cron_rm()` or `cron_clear()` remove jobs when you no longer need them. The package also ships an RStudio add-in (Addins > Schedule R scripts on Linux/Unix), which gives you a small form-based interface if you'd rather not remember the function arguments at all.
+
+## If even that's too much fuss
+
+If setting up `cronR` still feels like more infrastructure than the moment calls for, RStudio's built-in **Background Jobs** panel is worth knowing about. It lets you launch an R script in a separate background process — right from the IDE, no cron daemon involved — and keep working in your main session while it runs. You lose the "come back tomorrow morning and it's done" quality of a real cron job, since background jobs don't survive you closing RStudio, but for a script that just needs to run *without blocking you right now* (a long model fit, a big data pull), it's the lower-friction option. You'll find it under the Jobs tab, or via `rstudioapi::jobRunScript()` if you'd rather script it.
+
+Two tools, two levels of commitment: `cronR` for genuinely unattended, recurring work, and Background Jobs for the more modest ask of getting your console back while something runs.
