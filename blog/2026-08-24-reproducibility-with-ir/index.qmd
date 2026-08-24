@@ -1,0 +1,119 @@
+---
+title: "Reproducibility with Ir"
+subtitle: "A first look into the `ir` CLI tool"
+image: "r-in-reproducible-research-thumb.png"
+description: "A CLI tool that makes single R scripts and Quarto documents self-describing and reproducible, no Dockerfile required."
+author:
+  - name: "Erwin Lares"
+    affiliation: "Research Cyberinfrastructure (RCI), Division of Information Technology, UW-Madison"
+    orcid: "0000-0002-3284-828X"
+    email: "erwin.lares@wisc.edu"
+date: 2026-24-21
+date-modified: last-modified
+categories: [r, reproducibility, announcement]
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-title: Contents
+    number-sections: true
+    embed-resources: false
+    css: styles.css
+execute:
+  include: true
+  echo: true
+  message: false
+  error: false
+draft: false
+---
+
+
+I've spent a fair amount of time lately thinking about reproducibility as a spectrum rather than a single destination. On one end sits `renv`, which pins package versions to a project. On the other end sits Docker, which pins everything else too — the operating system, the system libraries, R itself. I've been building `containr` to bridge those two ends: it reads a project's `renv.lock` and generates a Dockerfile around it, so that "reproducible" stops meaning "reproducible as long as you're on my laptop" and starts meaning "reproducible on anyone's machine, indefinitely." That's the heavy end of the spectrum, and for a project meant to outlive its author, heavy is often the right answer.
+
+But not every script is a project. Sometimes I just want to hand someone a single `.R` file — a quick analysis, a demo for BRUG, a one-off Quarto report — and have it run the same way for them as it did for me, without asking them to `renv::init()` a whole directory structure first. That's the gap [`ir`](https://r-lib.github.io/ir/) fills, and it's worth introducing here because it approaches reproducibility from the opposite direction of `containr`: instead of wrapping an entire project in a container, it makes a single file self-describing. Everything that follows is drawn from `ir`'s own documentation, at [r-lib.github.io/ir](https://r-lib.github.io/ir/), which is worth bookmarking if any of this is useful to you.
+
+## What it does
+
+`ir` runs R scripts and renders (or previews) Quarto documents that declare their own requirements in their own frontmatter. You write the packages, the R version, and a few other constraints directly at the top of the file; `ir` reads that metadata, resolves it into a cached package library, and runs the file with the R version you asked for. No project scaffolding, no `renv.lock` sitting alongside the script, no separate lockfile to keep in sync — the script *is* the lockfile, in a sense.
+
+Here's the canonical example from the docs:
+
+```r
+#!/usr/bin/env -S ir run
+#| packages:
+#|   - dplyr
+#|   - tidyr==1.3.1
+#| r-version: ">= 4.3"
+#| isolated: true
+#| exclude-newer: "2024-02-01"
+
+airquality |> tidyr::drop_na(Ozone) |> dplyr::count(Month)
+```
+
+Run it with `ir run script.R`, and `ir` resolves `tidyr` to exactly `1.3.1`, lets `dplyr` and its transitive dependencies fall out of a Posit Package Manager snapshot dated to `2024-02-01`, and launches the script against an R version matching `>= 4.3`. Run it again next year, and you get the same environment back, because the snapshot date — not "whatever CRAN has today" — is what determines which package versions get installed.
+
+## How it does it
+
+Under the hood, `ir` leans on tools that are already familiar to most R users rather than reinventing them: `pak` resolves package references, `renv` handles the underlying library machinery, and [`rig`](https://github.com/r-lib/rig) — the R installation manager — is what `r-version` selects from. `ir`'s contribution is orchestration — reading the frontmatter, resolving it once, and caching the result as a content-addressed library so that the second run of a script (or the tenth) doesn't re-resolve anything. That caching is what makes `ir` pleasant to use day to day rather than merely correct: the reproducibility guarantee doesn't cost you a fresh install every time.
+
+## Installing it
+
+On macOS or Linux, the quickest path is `ir`'s own install script:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/r-lib/ir/main/scripts/install.sh | sh
+```
+
+On Windows, either use Scoop with the `r-bucket` bucket:
+
+```powershell
+scoop bucket add r-bucket https://github.com/cderv/r-bucket.git
+scoop install ir
+```
+
+or install directly from PowerShell:
+
+```powershell
+irm https://raw.githubusercontent.com/r-lib/ir/main/scripts/install.ps1 | iex
+```
+
+Either route drops `ir` (and its companion `rx`, for running package executables) into `~/.local/bin` on Unix or `$HOME\bin` on Windows, and adds that directory to your `PATH` if it isn't already there.
+
+One dependency worth calling out on its own: `ir` needs [`rig`](https://github.com/r-lib/rig) on `PATH` whenever a script asks for a specific R version — through frontmatter `r-version`, `--r-version`, or a date-only `exclude-newer`. `rig` is the R installation manager I already rely on to keep several R versions on hand at once; if you don't have it installed, `ir`'s installer will tell you as much and point you toward it. Beyond that, `ir` asks for very little: R (or Rscript) and, if you're rendering documents, Quarto. It bootstraps `pak` and `renv` into its own cache on first use, so neither needs to be pre-installed.
+
+## The frontmatter, briefly
+
+The frontmatter block is YAML, prefixed line by line with `#|`. A few fields do most of the work:
+
+- `packages` — a YAML sequence of package refs. Plain names (`dplyr`), pinned versions (`tidyr==1.3.1`), or source refs (`github::owner/repo@ref`) are all fair game.
+- `r-version` — a version requirement (`">= 4.3"`), resolved against R installations that `rig` already knows about on the machine.
+- `isolated` — set to `true` to drop the user library for the run, so nothing installed outside `ir`'s cache can quietly leak in.
+- `exclude-newer` — a `YYYY-MM-DD` snapshot date. This is the field doing the actual reproducibility work: it pins the default CRAN (and Bioconductor) repositories to a Posit Package Manager snapshot from that date, so package resolution is anchored to a point in time rather than to whatever happens to be current when the script runs.
+
+Quarto documents work the same way, except the metadata moves under an `ir:` key in the document's own YAML frontmatter, and the command becomes `ir render report.qmd` (or `ir preview` for a live session) instead of `ir run`:
+
+```yaml
+---
+title: My report
+ir:
+  packages:
+    - dplyr
+    - gt==0.10.1
+  r-version: ">= 4.3"
+  exclude-newer: 2024-02-01
+---
+```
+
+`ir` even seeds `rmarkdown` into the resolved packages automatically, since Quarto's knitr engine needs it and it's easy to forget to declare.
+
+## What one gains, and what one gives up
+
+Recall that `containr` earns its reproducibility by fixing the entire operating environment — the R version, the system libraries, the OS itself — inside an image that will still build in five years. `ir` earns a narrower kind of reproducibility: it fixes *package resolution* and *R version selection* for a single file, but it still runs on the host machine, using whatever system libraries happen to be installed there. A script that depends on a particular version of `libxml2`, say, is not `ir`'s problem to solve. In other words, `ir` reproduces the R environment, not the machine.
+
+That trade-off is, I think, the right one for a different category of artifact than the one `containr` targets. A project meant to be archived and rerun by strangers years from now wants the container. A script meant to be shared with a colleague this week, or dropped into a repository as a self-contained demo, wants something lighter — something a person can open, read the frontmatter of, and immediately understand what it needs, without also needing to understand Docker. `ir` is, in effect, a CLI alternative to the pattern of "write an R script, then separately document how to run it reproducibly": the documentation and the reproducibility mechanism are the same six lines at the top of the file.
+
+## Where this fits
+
+I plan to reach for `ir` for exactly the cases `containr` is overkill for: standalone scripts I want to hand off, Quarto reports that don't need their own repository, and quick demos for BRUG where I'd rather send one file than a whole project directory. It doesn't replace `renv`, and it certainly doesn't replace `containr` for anything meant to persist — but as a lightweight, file-level answer to "will this run the same way for you as it did for me," it earns a place in the toolkit alongside them.
+
+If you try it out, I'd be curious to hear where the frontmatter model holds up and where it doesn't — particularly for anyone at BRUG working with Python-adjacent R workflows, since `ir` also handles `python-packages` and `python-version` declarations through `reticulate`, which I haven't put through its paces yet myself.
