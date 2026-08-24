@@ -11,20 +11,8 @@ author:
 date: 2026-24-21
 date-modified: last-modified
 categories: [r, reproducibility, announcement]
-format:
-  html:
-    toc: true
-    toc-depth: 3
-    toc-title: Contents
-    number-sections: true
-    embed-resources: false
-    css: styles.css
-execute:
-  include: true
-  echo: true
-  message: false
-  error: false
 draft: false
+engine: markdown
 ---
 
 
