@@ -1,0 +1,71 @@
+---
+title: "September 2026 Meetup"
+subtitle: ""
+description: "An introduction to toolero"
+author:
+  - name: Erwin Lares
+date: 2026-08-28
+event-date: 2026-09-01
+event-start-time: "1:30 PM"
+event-end-time: "2:30 PM"
+date-modified: last-modified
+categories:
+  - meetup
+  - brug
+  - event
+  - toolero
+  - reproducibility
+draft: false
+---
+
+## Details
+
+- **Date:** Tuesday, September 1, 2026
+- **Time:** 1:30 – 2:30 PM
+- **Location:** CS 3139, Computer Science Building, UW–Madison
+
+## What we'll cover
+
+This month we're turning to a tool a few of you have already heard me
+mention in passing: [`toolero`](https://github.com/erwinlares/toolero), an R
+package I've built for getting a research project's early, easy-to-get-wrong
+decisions right the first time — where the data lives, whether dependencies
+are tracked, whether a document and its extracted script can drift apart.
+
+Rather than talk about the package in the abstract, we'll spend most of the
+hour with it open in front of us, working through one small running
+example — bill and flipper measurements from the Palmer Penguins dataset —
+live:
+
+1. **`init_project()` and `create_qmd()`.** Scaffolding a full project
+   structure, `renv`, git, and a literate Quarto document in two calls,
+   including the post-render hook that keeps that document and its
+   extracted `.R` script permanently in sync.
+2. **`detect_execution_context()`.** One function that lets the same
+   analysis run correctly whether it's stepped through interactively,
+   rendered, or called unattended via `Rscript` — say, from a cron job or a
+   cluster.
+3. **A split-apply-combine workflow.** `write_by_group()`,
+   `run_by_group()`, and `save_output()`, for anyone whose analysis needs
+   to run per-subset rather than all at once — and the direct on-ramp to
+   high-throughput computing when a laptop stops being enough.
+
+Bring a laptop if you'd like to follow along rather than just watch — this
+is a "show and try" session, not a lecture.
+
+## How to prepare
+
+Nothing is required beforehand, but a couple of minutes now will make the
+live-coding go smoother:
+
+- Install `toolero` from CRAN: `install.packages("toolero")`.
+- If you'd rather install the development version, or just want to poke
+  around the source first, the
+  [GitHub repository](https://github.com/erwinlares/toolero) has the full
+  README and function reference.
+- Have R and RStudio (or your editor of choice) open and ready to go —
+  we'll be running code together, not just watching it run.
+
+None of this is required reading. I'll walk through everything live, but
+having `toolero` already installed means you can jump in the moment we get
+to the first demo instead of waiting on an install partway through.

@@ -1,2 +1,2 @@
 # .Rprofile
-source("init-post.R")
+source("R/init-post.R")

@@ -9,3 +9,5 @@ listing:
 
 Upcoming and past BRUG meetups. All events are open to anyone who codes in R 
 — no experience level required, no registration needed unless noted.
+
+BRUG meets the first Tuesday of every month in the conference room 3139 of the Computer Science Building 
