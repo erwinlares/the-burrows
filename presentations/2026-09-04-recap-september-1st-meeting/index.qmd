@@ -1,0 +1,125 @@
+---
+title: "Recap September 1st Meeting"
+description: "The R package toolero gets a live demo"
+image: "toolero-logo-thumb.png"
+author:
+- name: Erwin Lares
+date: 2026-09-04
+date-modified: last-modified
+categories: []
+draft: published
+---
+
+We spent our September 1st meetup on [`toolero`](https://erwinlares.github.io/toolero/),and I wanted to write up
+what we covered while it's still fresh, both for the people who were
+there and for anyone who couldn't make it.
+
+## The core debate: does scaffolding help or hinder learning?
+
+The most productive disagreement of the night was about intention,
+specifically, the intention baked into a scaffolded project. `toolero`'s
+whole premise is that `init_project()` sets up a sensible folder
+structure for you: `data-raw/`, a starter `.qmd`, the works. Several
+people pushed back a bit on that premise. If the package builds the
+skeleton before a new user has had to think about why that skeleton
+looks the way it does, are we saving them time or quietly taking away a
+learning opportunity?
+
+That question opened onto a broader one: is R a language that teaches
+you as you go, or one that's designed to hold your hand? Someone raised
+the point that R's user base skews toward researchers, and often
+specifically toward professors, who may not code in anything else and
+who came to R because they needed a tool, not because they wanted to
+become programmers. If that's the audience, maybe a bit of hand-holding
+is the right call. I don't think we landed on a firm answer, and I
+suspect the honest answer is "it depends on the user," but it's exactly
+the kind of tension I want `toolero` to keep wrestling with rather than
+paper over.
+
+One concrete proposal came out of that discussion: gate each piece of
+scaffolding behind an explicit prompt. Rather than `init_project()`
+silently dropping in a `data-raw/` folder, it would ask, "Add
+`data-raw/` folder? [Y/N]", and let the user opt in folder by folder. I
+like this idea a lot, since it turns the scaffold into a series of small
+decisions instead of one opaque one, which is arguably the more
+pedagogically honest approach.
+
+My own answer to that tension, and the design principle behind
+`init_project()`, is that beginners often don't yet know what choices
+are even available to them when they're starting out. `init_project()`
+tries to solve that by making a set of sensible choices visible by
+default, rather than leaving a blank folder and a blank page. But since
+I want `toolero` to serve beginners and long-time users alike, I built
+in room to customize the structure you end up with. For small tweaks,
+the `custom_folders` argument, say, `custom_folders = c("models",
+"-output")`, will add a `models` folder and drop the default `output`
+folder from your project. For more advanced needs, you can hand
+`init_project()` a fully custom project structure via `config =
+"my-project-config.yaml"`.
+
+## Demo notes
+
+We also talked through how the `toolero` demo should be structured for
+people who are brand new to R. The consensus was that the very first
+step needs to be installing `toolero` itself, no assumptions. And it's
+worth flagging early, before anyone gets confused later, that starting a
+new project in a new `.Rproj` means reinstalling whatever packages that
+project depends on; the new project doesn't inherit packages from
+wherever you were working before.
+
+## README, now shipped
+
+The other big thread from the meeting was about documentation,
+specifically, whether `init_project()` should generate a README
+alongside the folder structure. The idea is that a README explaining
+what each folder is for lowers the barrier for anyone opening the
+project for the first time (including future you).
+
+That led to a smaller but surprisingly opinionated debate: `.txt` or
+`.md`? A few people with data-repository experience pointed out that
+repositories often expect `.txt` by convention, so librarians in the
+group leaned that direction. We ended up agreeing the cleanest solution
+is to offer both and let the option decide, rather than picking a
+winner. I've since filed that as a GitHub issue so we can track it
+properly.
+
+I'm happy to say the underlying feature is no longer just a meeting
+note: `init_project()` now ships with a README option. Set it when you
+scaffold a new project, and `toolero` will generate a README that
+documents what each folder is for, right alongside the rest of the
+structure.
+
+## Try it yourself
+
+If you haven't installed `toolero` yet, now's a good time. It's on
+CRAN, so it's a one-line install:
+
+```r
+install.packages("toolero") #CRAN version
+```
+
+I encourage to download the developmental version that has the implementation for the README feature.
+
+```r
+pak::pak("erwinlares/toolero")
+```
+
+From there, `init_project()` is the natural place to start; point it at
+a new directory and see what it scaffolds for you (README option
+included). If the intention-versus-convenience debate above resonated
+with you one way or the other, I'd genuinely like to hear about it.
+That's exactly the kind of feedback that shapes where the package goes
+next.
+
+## Housekeeping
+
+A couple of logistics items before I close this out. We're suggesting
+that people file GitHub Issues for `toolero` directly, rather than
+routing feedback only through meetup discussion, so it doesn't get
+lost. And mark your calendars: September 17th, 12:30-2:30pm, for a
+[**UW-Madison Posit Day**](https://it.wisc.edu/news/uw-madison-posit-day-ai-apps-and-dashboards/) event where we'll be treated to talk about our favorite topic *AI and Dashboards*. The speaker is [Garret Grolemund](https://education.rstudio.com/author/garrett/) from Posit 
+
+
+Last thing: I'll be sending an email asking for agenda ideas for our
+next meeting, so keep an eye out for that and reply with whatever you'd
+like to see covered.
