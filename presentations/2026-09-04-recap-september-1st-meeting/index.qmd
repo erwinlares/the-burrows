@@ -7,7 +7,7 @@ author:
 date: 2026-09-04
 date-modified: last-modified
 categories: [presentations]
-draft: published
+draft: false
 ---
 
 We spent our September 1st meetup on [`toolero`](https://erwinlares.github.io/toolero/),and I wanted to write up
