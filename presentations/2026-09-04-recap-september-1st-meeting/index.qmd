@@ -6,7 +6,7 @@ author:
 - name: Erwin Lares
 date: 2026-09-04
 date-modified: last-modified
-categories: []
+categories: [presentations]
 draft: published
 ---
 
