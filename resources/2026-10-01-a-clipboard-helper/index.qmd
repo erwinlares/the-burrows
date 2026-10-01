@@ -1,0 +1,399 @@
+---
+title: A Clipboard Helper
+author: Erwin Lares
+date: '2026-10-01'
+categories:
+- r
+- data-science
+- productivity
+- coding
+- toolero
+description: A small helper, to_cb(), prints R output and puts the same text on your
+  clipboard. Here is what you need to make it available everywhere, and how that changes
+  in an existing project versus one started with toolero.
+engine: markdown
+---
+
+
+
+
+
+
+## The problem
+
+Here is a small ritual I perform more often than I would like to admit. I
+run something in the console, say a model summary, and the output looks
+right. Then I want it somewhere else: in an email to a collaborator, in a
+GitHub issue, in a message asking a colleague why a coefficient looks odd.
+So I reach for the mouse, drag across the output, miss the first line, drag
+again, and discover that the last few lines have scrolled out of view.
+
+```r
+summary(lm(mpg ~ wt, data = mtcars))
+```
+
+None of this is difficult, but it is tedious, and tedium is exactly the kind
+of thing a computer should absorb on my behalf. In other words, what I
+wanted was for R to hand me its own output, ready to paste.
+
+## What `to_cb()` does
+
+`to_cb()` (read it as "to clipboard") takes an expression, runs it, shows
+you the output exactly as R would have, and copies that same text to the
+clipboard. Wrapping the example above is all it takes:
+
+```r
+to_cb(summary(lm(mpg ~ wt, data = mtcars)))
+```
+
+The native pipe works too, which is how I tend to use it in practice:
+
+```r
+mtcars |> head() |> to_cb()
+```
+
+Two small design decisions are worth knowing about. First, `to_cb()`
+returns the value of your expression invisibly, so you can drop it into the
+middle of a pipeline without changing what the pipeline does. Second, it
+copies only what R would have printed. An assignment such as
+`to_cb(y <- 5)` prints nothing at the console, so it copies nothing.
+
+## What you need
+
+Two pieces make this available in every R session, and it is worth asking
+why there are two. Recall that R reads a startup file, `~/.Rprofile`, once,
+when a session begins. I could have pasted the whole helper into that file,
+but I would rather keep the machinery that loads helpers separate from the
+helpers themselves. That way, adding a second helper later means dropping
+one more file into a folder, with no edits to `.Rprofile`.
+
+The first piece is a short loader in `~/.Rprofile` (you can open it with
+`usethis::edit_r_profile()`). It sources every `.R` file it finds in
+`~/.config/R/profile.d/`, in name order:
+
+```r
+############################
+# personal profile.d loader
+############################
+# Sources every .R file in ~/.config/R/profile.d/, in name order, once per
+# session. A file that fails produces a warning instead of stopping startup.
+local({
+    if (!isTRUE(getOption("personal.profile.loaded"))) {
+        options(personal.profile.loaded = TRUE)
+
+        profile_dir <- path.expand("~/.config/R/profile.d")
+
+        if (dir.exists(profile_dir)) {
+            profile_files <- list.files(
+                profile_dir,
+                pattern = "\\.[Rr]$",
+                full.names = TRUE
+            )
+
+            for (profile_file in sort(profile_files, method = "radix")) {
+                tryCatch(
+                    sys.source(profile_file, envir = globalenv()),
+                    error = function(e) {
+                        warning(
+                            "Skipped ", basename(profile_file), ": ",
+                            conditionMessage(e),
+                            call. = FALSE
+                        )
+                    }
+                )
+            }
+        }
+    }
+})
+```
+
+(The `.d` in `profile.d` is not a file extension. It is an old Unix
+convention for a "drop-in" directory whose files are all read in order, and
+R attaches no special meaning to it. The folder works only because the
+loader above looks for it.)
+
+The second piece is the helper itself, saved as
+`~/.config/R/profile.d/10-clipboard.R`. You can create the folder and open
+the file from R:
+
+```r
+dir.create("~/.config/R/profile.d", recursive = TRUE)
+file.edit("~/.config/R/profile.d/10-clipboard.R")
+```
+
+The numeric prefix is only there to control load order if you add more
+files later. The full helper follows, with comments aimed at readers who
+have not met `substitute()` or `withVisible()` before.
+
+::: {.callout-note collapse="true"}
+## The full helper, `10-clipboard.R`
+
+```r
+# ~/.config/R/profile.d/10-clipboard.R
+#
+# to_cb(): evaluate an expression, print its output as usual, and copy that
+# output to the system clipboard. The expression's value is returned
+# invisibly, so to_cb() can be dropped into a pipeline without changing it.
+#
+#   to_cb(summary(lm(mpg ~ wt, data = mtcars)))
+#   mtcars |> head() |> to_cb()
+#
+# Backends, tried in order:
+#   1. clipr, if it is installed and able to write
+#   2. native fallbacks, which need no R package:
+#        Windows : utils::writeClipboard()
+#        macOS   : pbcopy
+#        Linux   : wl-copy (Wayland), then xclip, then xsel (X11)
+#
+# If no backend works (for example over SSH, or on a CHTC node), a warning
+# is issued and the result is still returned, so a failed copy never stops
+# a script.
+
+# local() runs the block below in its own private environment. The two
+# helper functions defined inside it are visible to to_cb(), but they do not
+# clutter your global environment (ls() will show only to_cb).
+to_cb <- local({
+
+    # Backend 1: the clipr package.
+    write_clipr <- function(text) {
+        # requireNamespace() checks that a package is installed without
+        # attaching it (no library() call). quietly = TRUE suppresses the
+        # loading message. It returns TRUE or FALSE.
+        if (!requireNamespace("clipr", quietly = TRUE)) {
+            return(FALSE)
+        }
+
+        # tryCatch() runs the code and, if it throws an error, runs the
+        # error = function(e) handler instead of stopping. Here that turns
+        # "clipr failed" into FALSE so we can fall back to a native tool.
+        # allow_non_interactive = TRUE lets clipr write under Rscript and
+        # quarto render, where it would otherwise refuse.
+        tryCatch({
+            clipr::write_clip(text, allow_non_interactive = TRUE)
+            TRUE
+        }, error = function(e) FALSE)
+    }
+
+    # Backend 2: tools that ship with the operating system.
+    write_native <- function(text) {
+        # Sys.info() returns a named character vector. [[ ]] pulls out one
+        # element by name as a plain string: "Windows", "Darwin" (macOS),
+        # or "Linux".
+        sysname <- Sys.info()[["sysname"]]
+
+        if (identical(sysname, "Windows")) {
+            return(tryCatch({
+                # Windows wants lines separated by "\r\n", so we paste the
+                # lines together ourselves. Format 13 is CF_UNICODETEXT,
+                # which keeps accented characters intact. The utils::
+                # prefix means "the function from the utils package".
+                utils::writeClipboard(
+                    paste(text, collapse = "\r\n"),
+                    format = 13L
+                )
+                TRUE
+            }, error = function(e) FALSE))
+        }
+
+        # macOS has one tool. On Linux we build a list of candidates and
+        # try them in order. c() drops NULL, so wl-copy is only in the
+        # list when WAYLAND_DISPLAY is set (nzchar() is TRUE for a
+        # non-empty string).
+        commands <- if (identical(sysname, "Darwin")) {
+            "pbcopy"
+        } else {
+            c(
+                if (nzchar(Sys.getenv("WAYLAND_DISPLAY"))) "wl-copy",
+                "xclip -selection clipboard",
+                "xsel --clipboard --input"
+            )
+        }
+
+        for (command in commands) {
+            # strsplit() cuts the command on spaces, and [[1]][1] takes the
+            # first word, which is the program name ("xclip", "xsel", ...).
+            binary <- strsplit(command, " ", fixed = TRUE)[[1]][1]
+
+            # Sys.which() returns the program's full path, or "" if the
+            # program is not installed. If it is missing, skip to the next
+            # candidate.
+            if (!nzchar(Sys.which(binary))) {
+                next
+            }
+
+            # pipe() starts the program and gives us a connection we can
+            # write text into, as if we were typing it on the command
+            # line. "w" means write mode.
+            connection <- pipe(command, open = "w", encoding = "UTF-8")
+            wrote <- tryCatch({
+                writeLines(text, connection)
+                TRUE
+            }, error = function(e) FALSE)
+
+            # close() ends the connection. For a pipe it returns the
+            # program's exit status: 0 (or NULL) means success.
+            status <- tryCatch(close(connection), error = function(e) 1L)
+
+            if (wrote && (is.null(status) || identical(as.integer(status), 0L))) {
+                return(TRUE)
+            }
+        }
+
+        FALSE
+    }
+
+    # This is the function that to_cb actually becomes.
+    function(expr) {
+        # R normally evaluates an argument and hands the function its
+        # result. substitute() instead captures the code you typed, before
+        # it runs. For to_cb(summary(x)), expr now holds the call
+        # summary(x), not the summary itself. That lets us run it
+        # ourselves below, inside capture.output(), and check whether R
+        # would have printed the result.
+        expr <- substitute(expr)
+
+        # parent.frame() is the environment that called to_cb(), such as
+        # your console. We evaluate the code there so it can see your
+        # variables (x, mtcars, and so on).
+        env <- parent.frame()
+
+        # capture.output() runs the code inside the braces, but instead of
+        # showing printed text on screen, it returns that text as a
+        # character vector, one element per line.
+        output <- capture.output({
+            # eval() runs the captured code in env. withVisible() records
+            # whether R would normally print the result: visible is TRUE
+            # for summary(x) and FALSE for an assignment like y <- 5, so
+            # that to_cb(y <- 5) copies nothing, as the console would show
+            # nothing.
+            result <- withVisible(eval(expr, envir = env))
+
+            if (result$visible) {
+                print(result$value)
+            }
+        })
+
+        if (length(output)) {
+            # Show the captured text on screen, since capture.output()
+            # swallowed it, plus a trailing blank line.
+            cat(output, sep = "\n")
+            cat("\n")
+        } else {
+            message("Nothing to copy.")
+            return(invisible(result$value))
+        }
+
+        # || stops at the first TRUE. So the native tools are tried only if
+        # clipr is missing or failed. If both fail, warn but carry on.
+        if (!(write_clipr(output) || write_native(output))) {
+            warning(
+                "Could not reach a system clipboard (clipr and native tools ",
+                "both failed). Output was not copied.",
+                call. = FALSE
+            )
+        }
+
+        # invisible() returns the value without printing it, so
+        # to_cb(x) does not print x a second time.
+        invisible(result$value)
+    }
+})
+```
+:::
+
+A few practical notes. The helper uses the `clipr` package when it is
+installed and falls back to tools the operating system already provides, so
+`clipr` is optional. On macOS and Windows there is nothing else to install.
+On Linux you need one of `xclip`, `xsel`, or `wl-clipboard` (the last for
+Wayland). On Windows, `~` usually points at your Documents folder, so both
+`~/.Rprofile` and `~/.config/R/profile.d/` live there.
+
+## Existing project or new project?
+
+Everything so far assumes you start R in a folder that has no `.Rprofile`
+of its own. Projects change that, and this is where it pays to slow down.
+R reads exactly one `.Rprofile`: the project's, if the working directory
+has one, and the one in your home directory otherwise. It follows that the
+moment a project has its own profile, your personal one stops loading, and
+`to_cb()` goes with it. Any project that uses renv has such a file, since
+renv writes one containing `source("renv/activate.R")`. Nothing warns you.
+The helper is simply not there.
+
+**Adding it to an existing project.** The remedy is to have the project's
+profile load yours. Open the project's `.Rprofile` and add a guarded
+`source()` call at the end, after renv's activation line:
+
+```r
+if (file.exists("~/.Rprofile")) {
+  source("~/.Rprofile")
+}
+```
+
+The `file.exists()` guard matters if the project is shared. A collaborator
+who lacks a personal profile gets no error, just no helper. The cost of this
+route is that it is manual and per project: you have to remember to do it
+each time, and the way you find out you forgot is a "could not find
+function" error at an inconvenient moment.
+
+**Starting a new project with toolero.** `toolero::init_project()` can
+write that block for you through its `use_rprofile` argument:
+
+```r
+toolero::init_project(
+  path = "~/Documents/my-project",
+  use_rprofile = TRUE
+)
+```
+
+Here `TRUE` appends the guarded block above to the new project's
+`.Rprofile`, after renv's activation line. A character string sources a
+different file instead, which is handy if your profile lives in a dotfiles
+repository (`use_rprofile = "~/dotfiles/rprofile"`). The existence check is
+written into the block itself, so it runs at every session start, and a
+profile you create or edit after the project exists is still picked up.
+(If `use_rprofile` is missing from the version of toolero you have
+installed, the development version on GitHub, available through
+`pak::pak("erwinlares/toolero")`, is the one to try.)
+
+Comparing the two, the block of code is the same, so the difference lies in
+who writes it and when you decide. With `init_project()` the decision is a
+single argument at creation time. With an existing project it is a manual
+edit that is easy to forget.
+
+Does sourcing a personal profile into a project cost anything? In this
+case, I do not think it does. What the profile carries here is a default
+author for new packages, a preferred package repository, and a clipboard
+helper meant for the console. None of these is a dependency of the
+project's code, and renv still governs the dependencies that matter. If a
+preferred repository cannot supply a package the lockfile asks for, the
+restore fails loudly instead of quietly installing something else. And
+because `to_cb()` exists to be used interactively, nothing running on a
+server or a cluster node has any reason to call it.
+
+Two mechanical facts are worth knowing all the same. First, if the same
+option is set in both files, the later line wins, and because the block is
+appended last, your personal value overrides the project's. Second, renv
+restricts R to the project's own library, so a package you installed
+globally may not be visible inside the project. That is the reason
+`to_cb()` does not depend on `clipr`: if `clipr` is absent from the
+project library, the helper falls back to the operating system's own tools
+and carries on.
+
+## Caveats
+
+A few honest limits. `to_cb()` copies only what R prints to standard
+output, so messages and warnings from your code still appear at the console
+but are not copied. A remote session (SSH, a Posit Connect server, a
+cluster node) has no access to the clipboard on your own machine, so there
+you will see a warning that nothing was copied, and your code will still
+run to completion. Finally, the Windows branch is the least exercised of
+the three, so I would treat it with some suspicion until it has seen real
+use.
+
+## Where this leaves us
+
+I wanted R to hand me its own output, ready to paste. A short loader in
+`~/.Rprofile`, a single helper file in `~/.config/R/profile.d/`, and one
+extra line in any project that has a profile of its own are enough to get
+there. And once a folder of drop-in helpers exists, the next small annoyance
+is one file away from being solved.
